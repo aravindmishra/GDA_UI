@@ -1,0 +1,5 @@
+{
+    "api":{
+        "grocery_list":"http://localhost:8000/grocery/list"
+    }
+}

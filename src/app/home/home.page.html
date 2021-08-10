@@ -1,0 +1,105 @@
+<ion-header [translucent]="true" color="">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start" color="light">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end" color="light">
+      <ion-icon name="funnel" class="header-filter" (click)="presentActionSheet()"></ion-icon>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Filter Icon Block -->
+  <!-- <ion-grid class="filter-icons">
+    <ion-row>
+      <ion-col size='8'></ion-col>
+      <ion-col size='2'>
+        <ion-icon name="search"></ion-icon>
+      </ion-col>
+      <ion-col size='2' class="ion-activatable ripple-parent">
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        <ion-icon name="filter"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <!-- Category Filter block -->
+  <ion-grid *ngIf="filterState === 'Category'">
+    <ion-row>
+      <ion-col size='12'>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select value="1">
+            <ion-select-option value="1">All</ion-select-option>
+            <ion-select-option value="2">Cosmetics Items</ion-select-option>
+            <ion-select-option value="3">Food Items</ion-select-option>
+            <ion-select-option value="4">Washing Items</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Search Filter -->
+  <ion-grid *ngIf="filterState === 'Search'">
+    <ion-row>
+        <ion-searchbar></ion-searchbar>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Product Listout Block -->
+
+  <ion-card class="product-list" *ngFor="let product of productList">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+        <ion-col size='4'>
+          <img [src]="product.product_image" width="90%">
+        </ion-col>
+        <ion-col size='8'>
+          <ion-card-title class="display-title">{{product.product_name}}</ion-card-title>
+          <ion-card-subtitle>{{product.brand}}</ion-card-subtitle>
+          <p> Price : &#8377; {{product.price}}</p>
+        </ion-col>
+        </ion-row>
+        </ion-grid>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-row>
+              <ion-col> 
+                <ion-chip>
+                  <ion-label class="bold" (click)="minusQuantity(product)">-</ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col><ion-input [(ngModel)]="product.ordered_qty" type="number" value="1" class="border" readonly></ion-input></ion-col>
+              <ion-col>
+                <ion-chip>
+                  <ion-label class="bold" (click)="addQuantity(product)">+</ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button *ngIf="!product.purchased" color="success" class="right-align" (click)="addProduct(product)">Add</ion-button>
+            <ion-button *ngIf="product.purchased" color="warning" class="right-align">Added</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Confirmation -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" routerLink="/confirmation" [disabled]="common.purchasingProducts.length==0" (click)="moveToConfirmation()">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

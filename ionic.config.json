@@ -1,0 +1,7 @@
+{
+  "name": "GDA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

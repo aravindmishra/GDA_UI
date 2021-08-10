@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row [formGroup]="editForm">
+      <ion-col size='12'>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input placeholder="Name" autocapitalize="on" autocomplete="off" name="name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-textarea placeholder="Address" autocapitalize="on" autocomplete="off" name="address" formControlName="address"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Landmark</ion-label>
+        <ion-input placeholder="Landmark" autocapitalize="on" autocomplete="off" name="landmark" formControlName="landmark"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mobile No.</ion-label>
+        <ion-input type="number" placeholder="Mobile No." autocomplete="off" name="mobile_no" formControlName="mobile_no"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email ID</ion-label>
+        <ion-input placeholder="Name" autocapitalize="on" autocomplete="off" name="email_id" formControlName="email_id"></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label position="floating">New Password</ion-label>
+        <ion-input type="number" placeholder="Mobile No." autocomplete="off" [(ngModel)]="newPassword"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="number" placeholder="Mobile No." autocomplete="off" name="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="danger" class="top-align">Update</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

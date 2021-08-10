@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <!-- Confirmation List -->
+  <ion-list *ngIf="pageState == 'confirm'"> 
+    <ion-list-header>
+      Purchasing Items
+    </ion-list-header>
+
+    <ion-item class="confirmation-list" *ngFor="let item of common.purchasingProducts">
+      <ion-avatar slot="start">
+        <img [src]="item.product_image">
+      </ion-avatar>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size='5'>
+            <ion-label>
+              <h2>{{item.product_name}}</h2>
+              <p>{{item.brand}}</p>
+            </ion-label>
+          </ion-col>
+          <ion-col size='3'>
+            <ion-label>
+              <p> Qty : {{item.ordered_qty}}</p>
+            </ion-label>
+          </ion-col>
+          <ion-col size='3'>
+            <ion-label>
+              <p class="bold"> &#8377; {{item.price * item.ordered_qty}}</p>
+            </ion-label>
+          </ion-col>
+          <ion-col size='1'>
+              <ion-label color="danger" (click)="removeProduct(item)">X</ion-label>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-item>
+
+    <!-- Empty -->
+    <ion-card *ngIf="common.purchasingProducts.length === 0">
+      <ion-card-header>
+        <ion-card-title color="danger" class="align-center">No Items..! <ion-icon name="cart-outline"></ion-icon></ion-card-title>
+        <ion-card-subtitle class="align-center">Please Added Items</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-label class="total" *ngIf="common.purchasingProducts.length !== 0">TOTAL : &#8377; {{total}}</ion-label>
+  </ion-list>
+  <ion-button *ngIf="pageState == 'confirm'" expand="block" color="danger" class="place-order-btn" [disabled]="common.purchasingProducts.length === 0" (click)="plcaeOrderAlert()">Place Order</ion-button>
+  
+  <!-- Greeting Page-->
+  
+  <ion-card *ngIf="pageState == 'greeting'">
+    <img src="../../assets/bags.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle>Keep Supporting..</ion-card-subtitle>
+      <ion-card-title>Thanks For Shopping..!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      We will deliver as soon as possible. Happy Shopping , Have a nice day...!
+    </ion-card-content>
+  </ion-card>
+  <ion-button *ngIf="pageState == 'greeting'" expand="block" color="danger" class="place-order-btn" routerLink="/home">Back To Home </ion-button>
+
+</ion-content>

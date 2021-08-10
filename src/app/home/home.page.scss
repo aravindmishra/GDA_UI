@@ -1,0 +1,65 @@
+.border
+{
+    border: solid 1px #ddd;
+}
+
+.right-align
+{
+    float: right;
+}
+
+.border-bottom
+{
+    border-bottom: solid 1px #ddd;
+}
+
+.bold
+{
+    font-weight: 600;
+}
+
+.display-img
+{
+    
+}
+
+.display-title
+{
+    font-size: 17px;
+}
+
+.product-list
+{
+    ion-card-header
+    {
+        border-bottom: solid 1px #ddd;
+
+        img
+        {
+            border-radius: 11%;
+            border: solid 3px #c1c1c1;
+        }
+
+        p
+        {
+            font-weight: 600;
+            font-size: 15px;
+        }
+    }
+}
+
+.filter-icons
+{
+    ion-icon
+    {
+        font-size: 20px;
+        // float: right;
+        font-weight: 600;
+    }
+}
+
+.header-filter
+{
+    font-size: 20px;
+    padding: 20px;
+}
